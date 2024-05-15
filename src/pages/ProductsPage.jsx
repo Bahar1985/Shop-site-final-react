@@ -18,21 +18,20 @@ import Sidebar from "../components/Sidebar";
 
 function ProductsPage() {
   const products = useProducts();
-  // console.log(products);
 
-  const [displayed, setDisplayed] = useState([]); //data filter && search
-  const [search, setSearch] = useState(""); //value von input handel
-  const [query, setQuery] = useState({}); //ijad query baraye search && category
+
+  const [displayed, setDisplayed] = useState([]); 
+  const [search, setSearch] = useState(""); 
+  const [query, setQuery] = useState({}); 
   const [searchParams, setSearchParams] = useSearchParams(); 
 
   useEffect(() => {
     setDisplayed(products);
-
   setQuery(getInitialQuery(searchParams));
-
   }, [products]);
 
-  //emal kardan filter search
+  
+
   useEffect(() => {
     setSearchParams(query);
     setSearch(query.search || "")
@@ -54,7 +53,7 @@ function ProductsPage() {
             <Card key={p.id} data={p} />
           ))}
         </div>
-        <Sidebar   query={query} setQuery={setQuery} />
+        <Sidebar query={query} setQuery={setQuery} />
       </div>
     </>
   );
